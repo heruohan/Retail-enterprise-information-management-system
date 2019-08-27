@@ -13,22 +13,22 @@ import java.awt.*;
 
 public class JsrSheZhiPanel extends JPanel{
 	
-	private JScrollPane scrollPane=null;    //¹ö¶¯Ãæ°å
-	private JTable table=null;    //±í¸ñ
-	private DefaultTableModel model=null;    //±í¸ñÄ£ĞÍ
-	private String[] columnName=null;    //ÁĞÃû
+	private JScrollPane scrollPane=null;    //æ»šåŠ¨é¢æ¿
+	private JTable table=null;    //è¡¨æ ¼
+	private DefaultTableModel model=null;    //è¡¨æ ¼æ¨¡å‹
+	private String[] columnName=null;    //åˆ—å
 	
 	
-	private JTextField nameField=null;    //ĞÕÃû
-	private JTextField sexField=null;    //ĞÔ±ğ
-	private JTextField ageField=null;    //ÄêÁä
-	private JTextField telField=null;    //ÁªÏµµç»°
+	private JTextField nameField=null;    //å§“å
+	private JTextField sexField=null;    //æ€§åˆ«
+	private JTextField ageField=null;    //å¹´é¾„
+	private JTextField telField=null;    //è”ç³»ç”µè¯
 	
 	
-	private JButton on_offButton=null;    //½ûÓÃ/ÆôÓÃ°´Å¥
-	private JButton delButton=null;    //É¾³ı°´Å¥
-	private JButton gbButton=null;    //¹Ø±Õ°´Å¥
-	private JButton xgButton=null;    //ĞŞ¸Ä°´Å¥
+	private JButton on_offButton=null;    //ç¦ç”¨/å¯ç”¨æŒ‰é’®
+	private JButton delButton=null;    //åˆ é™¤æŒ‰é’®
+	private JButton gbButton=null;    //å…³é—­æŒ‰é’®
+	private JButton xgButton=null;    //ä¿®æ”¹æŒ‰é’®
 	
 	/*
 	public static void main(String[] args)
@@ -49,26 +49,26 @@ public class JsrSheZhiPanel extends JPanel{
 	}
 	*/
 	
-	//¹¹Ôìº¯Êı
+	//æ„é€ å‡½æ•°
 	public JsrSheZhiPanel()
 	{
 		init();
 	}
 	
 	
-	//³õÊ¼»¯¾­ÊÖÈËÉèÖÃÃæ°å
+	//åˆå§‹åŒ–ç»æ‰‹äººè®¾ç½®é¢æ¿
 	private void init()
 	{
 		this.setLayout(new GridBagLayout());
 		
-		//±í¸ñÃæ°å
+		//è¡¨æ ¼é¢æ¿
 		scrollPane=this.getScrollPane();
 		scrollPane.setPreferredSize(new Dimension(570,180));
 		this.setupComponent(this.getScrollPane(), 0, 0, 4, true);
 		
 		
-		//ĞÕÃû
-		JLabel nameLabel=new JLabel("ĞÕÃû£º");
+		//å§“å
+		JLabel nameLabel=new JLabel("å§“åï¼š");
 		this.setupComponent(nameLabel, 0, 1, 1, false);
 		
 		nameField=new JTextField();
@@ -77,8 +77,8 @@ public class JsrSheZhiPanel extends JPanel{
 		this.setupComponent(nameField, 1, 1, 1, true);
 		
 		
-		//ĞÔ±ğ
-		JLabel sexLabel=new JLabel("ĞÔ±ğ£º");
+		//æ€§åˆ«
+		JLabel sexLabel=new JLabel("æ€§åˆ«ï¼š");
 		this.setupComponent(sexLabel, 2, 1, 1, false);
 		
 		sexField=new JTextField();
@@ -86,23 +86,23 @@ public class JsrSheZhiPanel extends JPanel{
 		this.setupComponent(sexField, 3, 1, 1, true);
 		
 		
-		//ÄêÁä
-		JLabel ageLabel=new JLabel("ÄêÁä£º");
+		//å¹´é¾„
+		JLabel ageLabel=new JLabel("å¹´é¾„ï¼š");
 		this.setupComponent(ageLabel, 0, 2, 1, false);
 		
 		ageField=new JTextField();
 		this.setupComponent(ageField, 1, 2, 1, true);
 		
 		
-		//ÁªÏµµç»°
-		JLabel telLabel=new JLabel("ÁªÏµµç»°£º");
+		//è”ç³»ç”µè¯
+		JLabel telLabel=new JLabel("è”ç³»ç”µè¯ï¼š");
 		this.setupComponent(telLabel, 2, 2, 1, false);
 		
 		telField=new JTextField();
 		this.setupComponent(telField, 3, 2, 1, true);
 		
 		
-		//°´Å¥
+		//æŒ‰é’®
 		JPanel panel=new JPanel();
 		FlowLayout layout=new FlowLayout();
 		layout.setHgap(40);
@@ -122,7 +122,7 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//³õÊ¼»¯×é¼ş²¼ÖÃ
+	//åˆå§‹åŒ–ç»„ä»¶å¸ƒç½®
 	private void setupComponent(JComponent component,int gridx,int gridy,int gridwidth,boolean fill)
 	{
 		GridBagConstraints constraint=new GridBagConstraints();
@@ -146,7 +146,7 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//³õÊ¼»¯¹ö¶¯Ãæ°å£ºscrollPane
+	//åˆå§‹åŒ–æ»šåŠ¨é¢æ¿ï¼šscrollPane
 	private JScrollPane getScrollPane()
 	{
 		if(scrollPane==null)
@@ -159,7 +159,7 @@ public class JsrSheZhiPanel extends JPanel{
 	}
 	
 	
-	//³õÊ¼»¯±í¸ñ£ºtable
+	//åˆå§‹åŒ–è¡¨æ ¼ï¼štable
 	private JTable getTable()
 	{
 		if(table==null)
@@ -168,10 +168,10 @@ public class JsrSheZhiPanel extends JPanel{
 			table.setShowGrid(true);
 			//table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 			model=(DefaultTableModel)table.getModel();
-			columnName=new String[]{"±àºÅ","ĞÕÃû","ĞÔ±ğ","ÄêÁä","ÁªÏµµç»°","½ûÓÃ"};
+			columnName=new String[]{"ç¼–å·","å§“å","æ€§åˆ«","å¹´é¾„","è”ç³»ç”µè¯","ç¦ç”¨"};
 			model.setColumnIdentifiers(columnName);
 			
-			//Ìí¼Ó¼à¿ØÆ÷
+			//æ·»åŠ ç›‘æ§å™¨
 			table.addMouseListener(new MouseAdapter()
 					{
 				public void mouseClicked(MouseEvent e)
@@ -182,7 +182,7 @@ public class JsrSheZhiPanel extends JPanel{
 						return;
 					}
 					
-					//¸üĞÂËùÓĞÏà¹ØÎÄ±¾¿ò
+					//æ›´æ–°æ‰€æœ‰ç›¸å…³æ–‡æœ¬æ¡†
 					nameField.setText(table.getValueAt(index, 1).toString().trim());
 					sexField.setText(table.getValueAt(index, 2).toString().trim());
 					ageField.setText(table.getValueAt(index, 3).toString().trim());
@@ -194,14 +194,14 @@ public class JsrSheZhiPanel extends JPanel{
 	}
 	
 	
-	//³õÊ¼»¯½ûÓÃ/ÆôÓÃ°´Å¥£ºon_offButton
+	//åˆå§‹åŒ–ç¦ç”¨/å¯ç”¨æŒ‰é’®ï¼šon_offButton
 	private JButton getOn_offButton()
 	{
 		if(on_offButton==null)
 		{
-			on_offButton=new JButton("½ûÓÃ/Æô¶¯");
+			on_offButton=new JButton("ç¦ç”¨/å¯åŠ¨");
 			
-			//Ìí¼Ó¼à¿ØÆ÷
+			//æ·»åŠ ç›‘æ§å™¨
 			on_offButton.addActionListener(new ActionListener()
 					{
 				public void actionPerformed(ActionEvent e)
@@ -212,15 +212,15 @@ public class JsrSheZhiPanel extends JPanel{
 						return;
 					}
 					
-					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "È·ÈÏĞŞ¸Ä´Ë¾­ÊÖÈËµÄ×´Ì¬Âğ£¿");
+					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "ç¡®è®¤ä¿®æ”¹æ­¤ç»æ‰‹äººçš„çŠ¶æ€å—ï¼Ÿ");
 					if(confirm==JOptionPane.YES_OPTION)
 					{
 						String id=table.getValueAt(index, 0).toString().trim();
 						int res=Dao.update("update tb_jsr set enable=abs(enable-1) where id='" + id + "'");
 						if(res>0)
 						{
-							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "ĞŞ¸Ä³É¹¦£¡");
-							//ÖØĞÂ³õÊ¼»¯±í¸ñºÍÎÄ±¾¿ò
+							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "ä¿®æ”¹æˆåŠŸï¼");
+							//é‡æ–°åˆå§‹åŒ–è¡¨æ ¼å’Œæ–‡æœ¬æ¡†
 							updateTable();
 						}
 					}
@@ -231,14 +231,14 @@ public class JsrSheZhiPanel extends JPanel{
 	}
 	
 	
-	//³õÊ¼»¯É¾³ı°´Å¥£ºdelButton
+	//åˆå§‹åŒ–åˆ é™¤æŒ‰é’®ï¼šdelButton
 	private JButton getDelButton()
 	{
 		if(delButton==null)
 		{
-			delButton=new JButton("É¾³ı");
+			delButton=new JButton("åˆ é™¤");
 			
-			//Ìí¼Ó¼à¿ØÆ÷
+			//æ·»åŠ ç›‘æ§å™¨
 			delButton.addActionListener(new ActionListener()
 					{
 				public void actionPerformed(ActionEvent e)
@@ -249,15 +249,15 @@ public class JsrSheZhiPanel extends JPanel{
 						return;
 					}
 					
-					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "È·ÈÏÉ¾³ı´Ë¾­ÊÖÈËÂğ£¿");
+					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "ç¡®è®¤åˆ é™¤æ­¤ç»æ‰‹äººå—ï¼Ÿ");
 					if(confirm==JOptionPane.YES_OPTION)
 					{
 						String id=table.getValueAt(index, 0).toString().trim();
 						int res=Dao.delete("delete from tb_jsr where id='" + id + "'");
 						if(res>0)
 						{
-							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "É¾³ı³É¹¦");
-							//¸üĞÂ±í¸ñºÍÎÄ±¾¿ò
+							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "åˆ é™¤æˆåŠŸ");
+							//æ›´æ–°è¡¨æ ¼å’Œæ–‡æœ¬æ¡†
 							updateTable();
 						}
 						
@@ -270,14 +270,14 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//³õÊ¼»¯¹Ø±Õ°´Å¥£ºgbButton
+	//åˆå§‹åŒ–å…³é—­æŒ‰é’®ï¼šgbButton
 	private JButton getGbButton()
 	{
 		if(gbButton==null)
 		{
-			gbButton=new JButton("¹Ø±Õ");
+			gbButton=new JButton("å…³é—­");
 			
-			//Ìí¼Ó¼à¿ØÆ÷
+			//æ·»åŠ ç›‘æ§å™¨
 			gbButton.addActionListener(new ActionListener()
 					{
 				public void actionPerformed(ActionEvent e)
@@ -293,14 +293,14 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//³õÊ¼»¯ĞŞ¸Ä°´Å¥£ºxgButton
+	//åˆå§‹åŒ–ä¿®æ”¹æŒ‰é’®ï¼šxgButton
 	private JButton getXgButton()
 	{
 		if(xgButton==null)
 		{
-			xgButton=new JButton("ĞŞ¸Ä");
+			xgButton=new JButton("ä¿®æ”¹");
 			
-			//Ìí¼Ó¼à¿ØÆ÷
+			//æ·»åŠ ç›‘æ§å™¨
 			xgButton.addActionListener(new ActionListener()
 					{
 				public void actionPerformed(ActionEvent e)
@@ -311,18 +311,18 @@ public class JsrSheZhiPanel extends JPanel{
 						return;
 					}
 					
-					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "È·ÈÏĞŞ¸ÄÄêÁäºÍÁªÏµµç»°Âğ£¿");
+					int confirm=JOptionPane.showConfirmDialog(JsrSheZhiPanel.this, "ç¡®è®¤ä¿®æ”¹å¹´é¾„å’Œè”ç³»ç”µè¯å—ï¼Ÿ");
 					if(confirm==JOptionPane.YES_OPTION)
 					{
 						String id=table.getValueAt(row, 0).toString().trim();
 						String age=ageField.getText();
 						String tel=telField.getText();
 						
-						//¸üĞÂ¾­ÊÖÈËÊı¾İ¿â
+						//æ›´æ–°ç»æ‰‹äººæ•°æ®åº“
 						int res=Dao.update("update tb_jsr set age='" + age + "',tel='" + tel + "' where id='" + id + "'");
 						if(res>0)
 						{
-							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "ĞŞ¸Ä³É¹¦");
+							JOptionPane.showMessageDialog(JsrSheZhiPanel.this, "ä¿®æ”¹æˆåŠŸ");
 							updateTable();
 						}
 						
@@ -335,7 +335,7 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//¸üĞÂÎÄ±¾¿ò
+	//æ›´æ–°æ–‡æœ¬æ¡†
 	private void updateAllField()
 	{
 		nameField.setText("");
@@ -345,13 +345,13 @@ public class JsrSheZhiPanel extends JPanel{
 	
 	
 	
-	//¸üĞÂ±í¸ñ
+	//æ›´æ–°è¡¨æ ¼
 	public void updateTable()
 	{
 		this.updateAllField();
-		List lst=Dao.getJsrs();
+		List lst=Dao.getAllJsrs();    //ä¸ç®¡æ˜¯å¦ä¸ºå¯ç”¨æˆ–ç¦ç”¨ï¼Œè·å–æ‰€æœ‰ç»æ‰‹äºº
 		
-		//³õÊ¼»¯±í¸ñÄÚÈİºÍÁĞÃû
+		//åˆå§‹åŒ–è¡¨æ ¼å†…å®¹å’Œåˆ—å
 		model.setDataVector(null, columnName);
 		
 		String[] row=new String[6];
@@ -363,7 +363,7 @@ public class JsrSheZhiPanel extends JPanel{
 			row[2]=tmp.get(2).toString().trim();
 			row[3]=tmp.get(3).toString().trim();
 			row[4]=tmp.get(4).toString().trim();
-			row[5]=(tmp.get(5).toString().trim()).equals("1") ? "ÆôÓÃ" : "½ûÓÃ";
+			row[5]=(tmp.get(5).toString().trim()).equals("1") ? "å¯ç”¨" : "ç¦ç”¨";
 			model.addRow(row);
 		}
 		
