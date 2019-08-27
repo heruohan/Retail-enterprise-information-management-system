@@ -12,19 +12,19 @@ import java.io.*;
 
 public class Dao {
 	
-	//¶¨ÒåÊı¾İ¿âÇı¶¯ÀàµÄÃû³Æ
+	//å®šä¹‰æ•°æ®åº“é©±åŠ¨ç±»çš„åç§°
 	protected static String dbClassName="com.mysql.cj.jdbc.Driver";
-	//¶¨ÒåÊı¾İ¿âµÄ·ÃÎÊURL
+	//å®šä¹‰æ•°æ®åº“çš„è®¿é—®URL
 	protected static String dbUrl="jdbc:mysql://localhost:3306/db_database28?serverTimezone=UTC";
-	//¶¨Òå·ÃÎÊÊı¾İ¿âµÄÓÃ»§Ãû
+	//å®šä¹‰è®¿é—®æ•°æ®åº“çš„ç”¨æˆ·å
 	protected static String dbUser="root";
-	//¶¨Òå·ÃÎÊÊı¾İ¿âµÄÃÜÂë
+	//å®šä¹‰è®¿é—®æ•°æ®åº“çš„å¯†ç 
 	protected static String dbPwd="465160";
 	protected static String second=null;
 	public static Connection conn;
 	
 	
-	static    //¾²Ì¬³õÊ¼»¯DaoÀà
+	static    //é™æ€åˆå§‹åŒ–Daoç±»
 	{
 		try
 		{
@@ -37,7 +37,7 @@ public class Dao {
 		catch(ClassNotFoundException e)
 		{
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Çë½«MySQLµÄJDBCÇı¶¯°ü¸´ÖÆµ½libÎÄ¼ş¼ĞÖĞ¡£");//²¶»ñÒì³£ºó£¬µ¯³öÌáÊ¾¿ò
+			JOptionPane.showMessageDialog(null, "è¯·å°†MySQLçš„JDBCé©±åŠ¨åŒ…å¤åˆ¶åˆ°libæ–‡ä»¶å¤¹ä¸­ã€‚");//æ•è·å¼‚å¸¸åï¼Œå¼¹å‡ºæç¤ºæ¡†
 			System.exit(-1);
 		}
 		catch(Exception e)
@@ -48,7 +48,7 @@ public class Dao {
 	
 	
 	
-	//´´½¨Ë½ÓĞ¹¹Ôìº¯Êı,¼´²»ÔÊĞí´´½¨DaoÀàµÄÊµÀı¶ÔÏó£¬ÒòÎªÀàÖĞ¶¼ÊÇ¾²Ì¬·½·¨
+	//åˆ›å»ºç§æœ‰æ„é€ å‡½æ•°,å³ä¸å…è®¸åˆ›å»ºDaoç±»çš„å®ä¾‹å¯¹è±¡ï¼Œå› ä¸ºç±»ä¸­éƒ½æ˜¯é™æ€æ–¹æ³•
 	private Dao()
 	{
 		
@@ -56,7 +56,7 @@ public class Dao {
 	
 	
 	
-	//´´½¨Ö´ĞĞsqlÓï¾ä£¬·µ»ØResultSetÀàĞÍµÄ·½·¨
+	//åˆ›å»ºæ‰§è¡Œsqlè¯­å¥ï¼Œè¿”å›ResultSetç±»å‹çš„æ–¹æ³•
 	public static ResultSet findForResultSet(String sql)
 	{
 		if(conn==null)
@@ -81,16 +81,16 @@ public class Dao {
 	
 	
 	
-	//Ö´ĞĞsqlÓï¾ä£¬·µ»Ø²éÑ¯½á¹û¼¯µÄ×Ö·û´®¶şÎ¬Êı×é
+	//æ‰§è¡Œsqlè¯­å¥ï¼Œè¿”å›æŸ¥è¯¢ç»“æœé›†çš„å­—ç¬¦ä¸²äºŒç»´æ•°ç»„
 	public static List findForList(String sql)
 	{
-		List<List<String>> list=new ArrayList<>();    //´´½¨¶şÎ¬Êı×é
-		ResultSet rs=findForResultSet(sql);    //·µ»Ø²éÑ¯½á¹û¼¯
+		List<List<String>> list=new ArrayList<>();    //åˆ›å»ºäºŒç»´æ•°ç»„
+		ResultSet rs=findForResultSet(sql);    //è¿”å›æŸ¥è¯¢ç»“æœé›†
 		
 		try
 		{
 			ResultSetMetaData metadata=rs.getMetaData();
-			int numberOfColumn=metadata.getColumnCount();    //»ñµÃ½á¹û¼¯µÄÁĞÊı
+			int numberOfColumn=metadata.getColumnCount();    //è·å¾—ç»“æœé›†çš„åˆ—æ•°
 			
 			while(rs.next())
 			{
@@ -116,7 +116,7 @@ public class Dao {
 	
 	
 	
-	//Ìí¼ÓÊı¾İ
+	//æ·»åŠ æ•°æ®
 	public static boolean insert(String sql)
 	{
 		boolean result=false;
@@ -135,7 +135,7 @@ public class Dao {
 	}
 	
 	
-	//¸üĞÂÊı¾İ
+	//æ›´æ–°æ•°æ®
 	public static int update(String sql)
 	{
 		int result=0;
@@ -155,7 +155,7 @@ public class Dao {
 	
 	
 	
-	//»ñÈ¡ÀàÖ÷±í×î´óID
+	//è·å–ç±»ä¸»è¡¨æœ€å¤§ID
 	public static String getMainTypeTableMaxId(Date date,String table,String idChar,String idName)
 	{
 		String dateStr=date.toString().replace("-", "");
@@ -188,7 +188,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡ËùÓĞ¿Í»§ĞÅÏ¢
+	//è¯»å–æ‰€æœ‰å®¢æˆ·ä¿¡æ¯
 	public static List getKhInfos()
 	{
 		List list=findForList("select id,khname from tb_khinfo");
@@ -197,7 +197,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡ËùÓĞ¹©Ó¦ÉÌĞÅÏ¢
+	//è¯»å–æ‰€æœ‰ä¾›åº”å•†ä¿¡æ¯
 	public static List getGysInfos()
 	{
 		List list=findForList("select id,name from tb_gysinfo");
@@ -206,7 +206,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡¿Í»§ĞÅÏ¢,·µ»ØTbKhinfoÀà
+	//è¯»å–å®¢æˆ·ä¿¡æ¯,è¿”å›TbKhinfoç±»
 	public static TbKhinfo getKhInfo(Item item)
 	{
 		String where="khname='" + item.getName() + "'";
@@ -246,23 +246,23 @@ public class Dao {
 	
 	
 	
-	//Êı¾İ¿â±¸·İ²Ù×÷
+	//æ•°æ®åº“å¤‡ä»½æ“ä½œ
 	public static String backup() throws SQLException
 	{
-		LinkedList<String> sqls=new LinkedList<>();    //±¸·İÎÄ¼şÖĞµÄËùÓĞsql
+		LinkedList<String> sqls=new LinkedList<>();    //å¤‡ä»½æ–‡ä»¶ä¸­çš„æ‰€æœ‰sql
 		
-		//Ïà¹ØµÄ±íÃûÊı×é
+		//ç›¸å…³çš„è¡¨åæ•°ç»„
 		String[] tables= {"tb_gysinfo","tb_jsr","tb_khinfo","tb_kucun","tb_rkth_detail",
 				         "tb_rkth_main","tb_ruku_detail","tb_ruku_main","tb_sell_detail",
 				         "tb_sell_main","tb_spinfo","tb_userlist","tb_xsth_detail","tb_xsth_main"};
 		
 		
-		//´´½¨±£´æËùÓĞ±í¶ÔÏóµÄ¼¯ºÏ
+		//åˆ›å»ºä¿å­˜æ‰€æœ‰è¡¨å¯¹è±¡çš„é›†åˆ
 		ArrayList<Tables> tableList=new ArrayList<>();
 		for(int i=0;i<tables.length;i++)
 		{
 			Statement stmt=conn.createStatement();
-			ResultSet rs=stmt.executeQuery("desc " + tables[i]);    //·µ»Ø±íÃèÊö½á¹û¼¯
+			ResultSet rs=stmt.executeQuery("desc " + tables[i]);    //è¿”å›è¡¨æè¿°ç»“æœé›†
 			
 			ArrayList<Columns> columns=new ArrayList<>();
 			while(rs.next())
@@ -272,13 +272,13 @@ public class Dao {
 				c.setType(rs.getString("Type"));
 				String isNull=rs.getString("Null");
 				if("YES".equals(isNull))
-					c.setIsNull(true);    //ÒòÎªÄ¬ÈÏÖµÊÇfalse£¬ËùÒÔ²»ĞèÒªÅĞ¶Ï
+					c.setIsNull(true);    //å› ä¸ºé»˜è®¤å€¼æ˜¯falseï¼Œæ‰€ä»¥ä¸éœ€è¦åˆ¤æ–­
 				
-				String isKey=rs.getString("Key");    //ÅĞ¶ÏÊÇ·ñÊÇÖ÷¼ü
+				String isKey=rs.getString("Key");    //åˆ¤æ–­æ˜¯å¦æ˜¯ä¸»é”®
 				if("PRI".equals(isKey))
 				{
-					c.setIsKey(true);    //ÊÇ Ö÷¼ü
-					String isIncrement=rs.getString("Extra");    //ÔÚÊÇÖ÷¼üµÄ»ù´¡ÉÏÅĞ¶ÏÊÇ·ñµİÔö
+					c.setIsKey(true);    //æ˜¯ ä¸»é”®
+					String isIncrement=rs.getString("Extra");    //åœ¨æ˜¯ä¸»é”®çš„åŸºç¡€ä¸Šåˆ¤æ–­æ˜¯å¦é€’å¢
 					if("auto_increment".equals(isIncrement))
 						c.setIsIncrement(true);
 				}
@@ -286,25 +286,25 @@ public class Dao {
 			}
 			
 			
-			Tables table=new Tables(tables[i],columns);    //ÊµÀı»¯±í¶ÔÏó
-			tableList.add(table);    //½«±í¶ÔÏó¼ÓÈëµ½±í¼¯ºÏÖĞ
+			Tables table=new Tables(tables[i],columns);    //å®ä¾‹åŒ–è¡¨å¯¹è±¡
+			tableList.add(table);    //å°†è¡¨å¯¹è±¡åŠ å…¥åˆ°è¡¨é›†åˆä¸­
 			rs.close();
 			stmt.close();
 		}
 		
 		
-		//Ñ­»·±í¶ÔÏó¼¯ºÏ
+		//å¾ªç¯è¡¨å¯¹è±¡é›†åˆ
 		for(int i=0;i<tableList.size();i++)
 		{
-			Tables table=tableList.get(i);    //»ñÈ¡±í¶ÔÏó
+			Tables table=tableList.get(i);    //è·å–è¡¨å¯¹è±¡
 			
-			String dropsql="drop table if exists " + table.getName() + ";";    //É¾³ı±íµÄsql
+			String dropsql="drop table if exists " + table.getName() + ";";    //åˆ é™¤è¡¨çš„sql
 			sqls.add(dropsql);
 			
 			
-			//´´½¨±íµÄsql
+			//åˆ›å»ºè¡¨çš„sql
 			StringBuilder createsql=new StringBuilder();
-			createsql.append("create table " + table.getName() + "(");    //´´½¨±íÍ·sql
+			createsql.append("create table " + table.getName() + "(");    //åˆ›å»ºè¡¨å¤´sql
 			
 			ArrayList<Columns> columns=table.getColumns();
 			for(int j=0;j<columns.size();j++)
@@ -327,21 +327,21 @@ public class Dao {
 					createsql.append(");");
 			}
 			
-			//¼ÓÈë±í´´½¨Óï¾ä
+			//åŠ å…¥è¡¨åˆ›å»ºè¯­å¥
 			sqls.add(createsql.toString());
 			
 			
-			//´´½¨²åÈësqlÓï¾ä
+			//åˆ›å»ºæ’å…¥sqlè¯­å¥
 			Statement stmt=conn.createStatement();
-			ResultSet rs=stmt.executeQuery("select * from " + table.getName()); //µÃµ½±íµÄËùÓĞÊı¾İ¼¯ºÏ
+			ResultSet rs=stmt.executeQuery("select * from " + table.getName()); //å¾—åˆ°è¡¨çš„æ‰€æœ‰æ•°æ®é›†åˆ
 			
 			while(rs.next())    //
 			{
-				StringBuilder insertsql=new StringBuilder();    //´´½¨Ã¿ĞĞµÄ²åÈëÓïsql
+				StringBuilder insertsql=new StringBuilder();    //åˆ›å»ºæ¯è¡Œçš„æ’å…¥è¯­sql
 				insertsql.append("insert into " + table.getName() + " values(");
-				for(int j=0;i<columns.size();i++)    //Ñ­»·µ±Ç°±íµÄµ±Ç°ĞĞµÄËùÓĞÁĞ
+				for(int j=0;i<columns.size();i++)    //å¾ªç¯å½“å‰è¡¨çš„å½“å‰è¡Œçš„æ‰€æœ‰åˆ—
 				{
-					Columns c=columns.get(j);    //»ñÈ¡ÁĞ¶ÔÏó
+					Columns c=columns.get(j);    //è·å–åˆ—å¯¹è±¡
 					String type=c.getType();
 					if(type.startsWith("char")  || type.startsWith("varchar")  || type.startsWith("datetime"))
 					{
@@ -370,8 +370,8 @@ public class Dao {
 		}
 		
 		
-		//Ìí¼ÓÊÓÍ¼Ïà¹ØÓï¾ä
-		//ÊÓÍ¼v_rukuView
+		//æ·»åŠ è§†å›¾ç›¸å…³è¯­å¥
+		//è§†å›¾v_rukuView
 		sqls.add("drop view if exists v_rukuView;");
 		sqls.add("create view v_rukuView as select tb_ruku_main.rkID, tb_ruku_detail.spid, " + 
 		         "tb_spinfo.spname, tb_spinfo.gg, tb_ruku_detail.dj, tb_ruku_detail.sl, " + 
@@ -382,7 +382,7 @@ public class Dao {
 		
 		
 		
-		//ÊÓÍ¼v_sellView
+		//è§†å›¾v_sellView
 		sqls.add("drop view if exists v_sellView;");
 		sqls.add("create view v_sellView as select tb_sell_main.sellID, tb_spinfo.spname, " +
 		        "tb_sell_detail.spid, tb_spinfo.gg, tb_sell_detail.dj, tb_sell_detail.sl, " + 
@@ -394,15 +394,15 @@ public class Dao {
 		
 		
 		//
-		java.util.Date date=new java.util.Date();    //Í¨¹ıDate¶ÔÏó»ñÈ¡µ±Ç°Ê±¼ä¶ÔÏó
+		java.util.Date date=new java.util.Date();    //é€šè¿‡Dateå¯¹è±¡è·å–å½“å‰æ—¶é—´å¯¹è±¡
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd_HHmmss");
 		String backupTime=sdf.format(date);
-		//»ñµÃ±¸·İÎÄ¼şµÄ´æ·ÅÂ·¾¶
-		String filePath="backup\\" + backupTime + ".sql";    //Ç°ÃæÃ»ÓĞ\\±íÊ¾ÔÚµ±Ç°Ä¿Â¼ÏÂ
+		//è·å¾—å¤‡ä»½æ–‡ä»¶çš„å­˜æ”¾è·¯å¾„
+		String filePath="backup\\" + backupTime + ".sql";    //å‰é¢æ²¡æœ‰\\è¡¨ç¤ºåœ¨å½“å‰ç›®å½•ä¸‹
 		
 		File sqlFile=new File(filePath);
 		
-		//ÅĞ¶ÏÎÄ¼şµÄ¸¸Ä¿Â¼ÊÇ·ñ´æÔÚ£¬Èç²»´æÔÚÔò´´½¨
+		//åˆ¤æ–­æ–‡ä»¶çš„çˆ¶ç›®å½•æ˜¯å¦å­˜åœ¨ï¼Œå¦‚ä¸å­˜åœ¨åˆ™åˆ›å»º
 		File parent=sqlFile.getParentFile();
 		if(!parent.exists())
 		{
@@ -446,7 +446,7 @@ public class Dao {
 		}
 		finally
 		{
-			//¹Ø±ÕrwÁ÷
+			//å…³é—­rwæµ
 			if(rw!=null)
 			{
 				try
@@ -460,7 +460,7 @@ public class Dao {
 			}
 			
 			
-			//¹Ø±ÕoswÁ÷
+			//å…³é—­oswæµ
 			if(osw!=null)
 			{
 				try
@@ -474,7 +474,7 @@ public class Dao {
 			}
 			
 			
-			//¹Ø±ÕfosÁ÷
+			//å…³é—­fosæµ
 			if(fos!=null)
 			{
 				try
@@ -497,14 +497,14 @@ public class Dao {
 	
 	
 	
-	//Êı¾İ¿âµÄ»Ö¸´²Ù×÷,Ö÷ÒªÊÇÍ¨¹ıÖğĞĞÖ´ĞĞ±¸·İÎÄ¼şÖĞµÄSQLÓï¾äÊµÏÖ
+	//æ•°æ®åº“çš„æ¢å¤æ“ä½œ,ä¸»è¦æ˜¯é€šè¿‡é€è¡Œæ‰§è¡Œå¤‡ä»½æ–‡ä»¶ä¸­çš„SQLè¯­å¥å®ç°
 	public static void restore(String filepath)
 	{
-		File sqlFile=new File(filepath);    //´´½¨±¸·İÎÄ¼ş¶ÔÏó
-		Statement stmt=null;    //sqlÓï¾ä½Ó¿Ú
-		FileInputStream fis=null;    //ÎÄ¼şÊäÈë×Ö½ÚÁ÷
-		InputStreamReader isr=null;    //×Ö½ÚÁ÷×ª»¯Îª×Ö·ûÁ÷
-		BufferedReader br=null;    //»º´æÊäÈë×Ö·ûÁ÷
+		File sqlFile=new File(filepath);    //åˆ›å»ºå¤‡ä»½æ–‡ä»¶å¯¹è±¡
+		Statement stmt=null;    //sqlè¯­å¥æ¥å£
+		FileInputStream fis=null;    //æ–‡ä»¶è¾“å…¥å­—èŠ‚æµ
+		InputStreamReader isr=null;    //å­—èŠ‚æµè½¬åŒ–ä¸ºå­—ç¬¦æµ
+		BufferedReader br=null;    //ç¼“å­˜è¾“å…¥å­—ç¬¦æµ
 		
 		try
 		{
@@ -512,8 +512,8 @@ public class Dao {
 			isr=new InputStreamReader(fis);
 			br=new BufferedReader(isr);
 			
-			String readStr=null;    //±£´æ±¸·İÎÄ¼şÖĞµÄÒ»ĞĞsqlÓï¾ä
-			while((readStr=br.readLine())!=null)    //ÖğĞĞ¶ÁÈ¡±¸·İÎÄ¼şÖĞµÄÄÚÈİ
+			String readStr=null;    //ä¿å­˜å¤‡ä»½æ–‡ä»¶ä¸­çš„ä¸€è¡Œsqlè¯­å¥
+			while((readStr=br.readLine())!=null)    //é€è¡Œè¯»å–å¤‡ä»½æ–‡ä»¶ä¸­çš„å†…å®¹
 			{
 				if(!"".equals(readStr.trim()))
 				{
@@ -538,7 +538,7 @@ public class Dao {
 		}
 		finally
 		{
-			//¹Ø±ÕbrÁ÷
+			//å…³é—­bræµ
 			if(br!=null)
 			{
 				try
@@ -552,7 +552,7 @@ public class Dao {
 			}
 			
 			
-			//¹Ø±ÕisrÁ÷
+			//å…³é—­isræµ
 			if(isr!=null)
 			{
 				try
@@ -566,7 +566,7 @@ public class Dao {
 			}
 			
 			
-			//¹Ø±ÕfisÁ÷
+			//å…³é—­fisæµ
 			if(fis!=null)
 			{
 				try
@@ -584,7 +584,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡Ö¸¶¨¹©Ó¦ÉÌĞÅÏ¢£¬·µ»ØTbGysinfoÀà
+	//è¯»å–æŒ‡å®šä¾›åº”å•†ä¿¡æ¯ï¼Œè¿”å›TbGysinfoç±»
 	public static TbGysinfo getGysinfo(Item item)
 	{
 		String where="name=" + "'" + item.getName() + "'";
@@ -625,7 +625,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡ÓÃ»§ĞÅÏ¢,·µ»ØTbUserlistÀà
+	//è¯»å–ç”¨æˆ·ä¿¡æ¯,è¿”å›TbUserlistç±»
 	public static TbUserlist getUserlist(String name,String password)
 	{
 		TbUserlist user=new TbUserlist();
@@ -653,7 +653,7 @@ public class Dao {
 	
 	
 	
-	//Ö´ĞĞÖ¸¶¨²éÑ¯
+	//æ‰§è¡ŒæŒ‡å®šæŸ¥è¯¢
 	public static ResultSet query(String QueryStr)
 	{
 		ResultSet rs=findForResultSet(QueryStr);
@@ -663,7 +663,7 @@ public class Dao {
 	
 	
 	
-	//Ö´ĞĞÉ¾³ı
+	//æ‰§è¡Œåˆ é™¤
 	public static int delete(String sql)
 	{
 		return update(sql);
@@ -671,7 +671,7 @@ public class Dao {
 	
 	
 	
-	//Ìí¼Ó¿Í»§ĞÅÏ¢·½·¨
+	//æ·»åŠ å®¢æˆ·ä¿¡æ¯æ–¹æ³•
 	public static boolean addKeHu(TbKhinfo kehuinfo)
 	{
 		if(kehuinfo==null)
@@ -690,7 +690,7 @@ public class Dao {
 	
 	
 	
-	//ĞŞ¸Ä¿Í»§ĞÅÏ¢·½·¨
+	//ä¿®æ”¹å®¢æˆ·ä¿¡æ¯æ–¹æ³•
 	public static int updateKeHu(TbKhinfo kehuinfo)
 	{
 		return update("update tb_khinfo set khname='" + kehuinfo.getKhname() + "'," +
@@ -705,7 +705,7 @@ public class Dao {
 	
 	
 	
-	//ĞŞ¸Ä¿â´æĞÅÏ¢·½·¨
+	//ä¿®æ”¹åº“å­˜ä¿¡æ¯æ–¹æ³•
 	public static int updateKuCunDj(TbKucun kucun)
 	{
 		return update("update tb_kucun set dj='" + kucun.getDj() +
@@ -714,7 +714,7 @@ public class Dao {
 	
 	
 	
-	//ĞŞ¸Ä¹©Ó¦ÉÌĞÅÏ¢µÄ·½·¨
+	//ä¿®æ”¹ä¾›åº”å•†ä¿¡æ¯çš„æ–¹æ³•
 	public static int updateGys(TbGysinfo gysinfo)
 	{
 		return update("update tb_gysinfo set name='" + gysinfo.getName() + "'," +
@@ -727,7 +727,7 @@ public class Dao {
 	
 	
 	
-	//Ìí¼Ó¹©Ó¦ÉÌĞÅÏ¢·½·¨
+	//æ·»åŠ ä¾›åº”å•†ä¿¡æ¯æ–¹æ³•
 	public static boolean addGys(TbGysinfo gysinfo)
 	{
 		if(gysinfo==null)
@@ -741,7 +741,7 @@ public class Dao {
 	}
 	
 	
-	//Ìí¼ÓÉÌÆ·
+	//æ·»åŠ å•†å“
 	public static boolean addSp(TbSpinfo spinfo)
 	{
 		if(spinfo==null)
@@ -757,7 +757,7 @@ public class Dao {
 	
 	
 	
-	//¸üĞÂÉÌÆ·
+	//æ›´æ–°å•†å“
 	public static int updateSp(TbSpinfo spinfo)
 	{
 		return update("update tb_spinfo set spname='" + spinfo.getSpname() + 
@@ -769,7 +769,7 @@ public class Dao {
 	
 	
 	
-	//¶ÁÈ¡ÉÌÆ·ĞÅÏ¢
+	//è¯»å–å•†å“ä¿¡æ¯
 	public static TbSpinfo getSpinfo(Item item)
 	{
 		TbSpinfo info=new TbSpinfo();
@@ -806,7 +806,7 @@ public class Dao {
 	
 	
 	
-	//»ñÈ¡ËùÓĞÉÌÆ·ĞÅÏ¢
+	//è·å–æ‰€æœ‰å•†å“ä¿¡æ¯
 	public static List getSpinfos()
 	{
 		List list=findForList("select * from tb_spinfo");
@@ -817,7 +817,7 @@ public class Dao {
 	
 	
 	
-	//»ñÈ¡¿â´æÉÌÆ·µÄĞÅÏ¢
+	//è·å–åº“å­˜å•†å“çš„ä¿¡æ¯
 	public static TbKucun getKucun(Item item)
 	{
 		String where="spname='" + item.getName() + "'";
@@ -852,7 +852,7 @@ public class Dao {
 	
 	
 	
-	//»ñÈ¡Èë¿âµ¥µÄ×î´óID£¬¼´×î´óÈë¿âÆ±ºÅ
+	//è·å–å…¥åº“å•çš„æœ€å¤§IDï¼Œå³æœ€å¤§å…¥åº“ç¥¨å·
 	public static String getRuKuMainMaxId(Date date)
 	{
 		return getMainTypeTableMaxId(date,"tb_ruku_main","RK","rkID");
@@ -860,7 +860,7 @@ public class Dao {
 	
 	
 	
-	//ÔÚÊÂÎïÖĞÌí¼ÓÈë¿âĞÅÏ¢
+	//åœ¨äº‹ç‰©ä¸­æ·»åŠ å…¥åº“ä¿¡æ¯
 	public static boolean insertRuKuInfo(TbRukuMain ruMain)
 	{
 		try
@@ -869,7 +869,7 @@ public class Dao {
 			conn.setAutoCommit(false);
 			
 			
-			//½«´ËÊı¾İÄ£ĞÍÌí¼Óµ½Èë¿âÖ÷±íÖĞ
+			//å°†æ­¤æ•°æ®æ¨¡å‹æ·»åŠ åˆ°å…¥åº“ä¸»è¡¨ä¸­
 			insert("insert into tb_ruku_main values('" + ruMain.getRkId() + "','" + 
 			       ruMain.getPzs() + "','" + ruMain.getJe() + "','" + ruMain.getYsjl() + "','" + 
 					ruMain.getGysname() + "','" + ruMain.getRkdate() + "','" + ruMain.getCzy() + "','" + 
@@ -882,12 +882,12 @@ public class Dao {
 			{
 				TbRukuDetail details=iter.next();
 				
-				//½«Êı¾İÌí¼Óµ½Èë¿âÏêÏ¸±íÖĞ
+				//å°†æ•°æ®æ·»åŠ åˆ°å…¥åº“è¯¦ç»†è¡¨ä¸­
 				insert("insert into tb_ruku_detail values('" + ruMain.getRkId() + "','" + 
 				      details.getTbSpinfo() + "','" + details.getDj() + "','" + details.getSl() + "')");
 				
 				
-				//ĞŞ¸Ä¿â´æĞÅÏ¢
+				//ä¿®æ”¹åº“å­˜ä¿¡æ¯
 				Item item=new Item();
 				item.setId(details.getTbSpinfo());
 				TbSpinfo spinfo=getSpinfo(item);
@@ -896,7 +896,7 @@ public class Dao {
 				{
 					TbKucun kucuninfo=getKucun(item);
 					
-					//Èç¹û¿â´æÖĞÃ»ÓĞ´ËÉÌÆ·,Ôò½«Æä¼ÓÈë¿â´æ±íÖĞ
+					//å¦‚æœåº“å­˜ä¸­æ²¡æœ‰æ­¤å•†å“,åˆ™å°†å…¶åŠ å…¥åº“å­˜è¡¨ä¸­
 					if(kucuninfo.getId()==null || kucuninfo.getId().isEmpty())
 					{
 						insert("insert into tb_kucun values('" + spinfo.getId() + "','" + 
@@ -905,7 +905,7 @@ public class Dao {
 								"','" + details.getDj() + "','" + details.getSl() + "')");
 						
 					}
-					else    //Èç¹û¿â´æÖĞÓĞ´ËÖÖÉÌÆ·£¬Ôò½«ÆäÊıÁ¿Ôö¼Ó
+					else    //å¦‚æœåº“å­˜ä¸­æœ‰æ­¤ç§å•†å“ï¼Œåˆ™å°†å…¶æ•°é‡å¢åŠ 
 					{
 						int newNum=kucuninfo.getKcsl() + details.getSl();
 						update("update tb_kucun set kcsl='" + newNum + "',dj='" + details.getDj() +
@@ -928,7 +928,7 @@ public class Dao {
 	
 	
 	
-	//»ñÈ¡ÍË»õ×î´óID
+	//è·å–é€€è´§æœ€å¤§ID
 	public static String getRkthMainMaxId(Date date)
 	{
 		return getMainTypeTableMaxId(date,"tb_rkth_main","RT","rkthID");
@@ -936,7 +936,7 @@ public class Dao {
 	
 	
 	
-	//ÔÚÊÂÎïÖĞÌí¼ÓÈë¿âÍË»õĞÅÏ¢
+	//åœ¨äº‹ç‰©ä¸­æ·»åŠ å…¥åº“é€€è´§ä¿¡æ¯
 	public static boolean insertRkthInfo(TbRkthMain rkthMain)
 	{
 		try
@@ -944,7 +944,7 @@ public class Dao {
 			boolean autoCommit=conn.getAutoCommit();
 			conn.setAutoCommit(false);
 			
-			//½«´ËÊı¾İÌí¼Óµ½Èë¿âÍË»õÖ÷±íÖĞ
+			//å°†æ­¤æ•°æ®æ·»åŠ åˆ°å…¥åº“é€€è´§ä¸»è¡¨ä¸­
 			insert("insert into tb_rkth_main values('" + rkthMain.getRkthId() + "','" + 
 			      rkthMain.getPzs() + "','" + rkthMain.getJe() + "','" + rkthMain.getYsjl() + "','" + 
 					rkthMain.getGysname() + "','" + rkthMain.getRtdate() + "','" + rkthMain.getCzy() + "','" + 
@@ -957,19 +957,19 @@ public class Dao {
 			{
 				TbRkthDetail detail=iterator.next();
 				
-				//½«Êı¾İ¼ÓÈëµ½Èë¿âÍË»õÏêÏ¸ĞÅÏ¢±íÖĞ
+				//å°†æ•°æ®åŠ å…¥åˆ°å…¥åº“é€€è´§è¯¦ç»†ä¿¡æ¯è¡¨ä¸­
 				insert("insert into tb_rkth_detail values('" + rkthMain.getRkthId() + "','" + 
 				       detail.getSpid() + "','" + detail.getDj() + "','" + detail.getSl() + "')");
 				
 				
-				//ĞŞ¸Ä¿â´æ±íĞÅÏ¢
+				//ä¿®æ”¹åº“å­˜è¡¨ä¿¡æ¯
 				Item item=new Item();
 				item.setId(detail.getSpid());
 				
 				TbSpinfo spinfo=getSpinfo(item);
 				if(spinfo.getId()!=null && !spinfo.getId().isEmpty())
 				{
-					//µ÷Õû¿â´æĞÅÏ¢
+					//è°ƒæ•´åº“å­˜ä¿¡æ¯
 					TbKucun kucuninfo=getKucun(item);
 					if(kucuninfo.getId()!=null && !kucuninfo.getId().isEmpty())
 					{
@@ -994,7 +994,7 @@ public class Dao {
 	}
 	
 	
-	//»ñÈ¡ÏúÊÛÖ÷±í×î´óID
+	//è·å–é”€å”®ä¸»è¡¨æœ€å¤§ID
 	public static String getSellMainMaxId(Date date)
 	{
 		return getMainTypeTableMaxId(date,"tb_sell_main","XS","sellID");
@@ -1002,7 +1002,7 @@ public class Dao {
 	
 	
 	
-	//ÔÚÊÂÎïÖĞÌí¼ÓÏúÊÛĞÅÏ¢
+	//åœ¨äº‹ç‰©ä¸­æ·»åŠ é”€å”®ä¿¡æ¯
 	public static boolean insertSellInfo(TbSellMain sellMain)
 	{
 		try
@@ -1010,7 +1010,7 @@ public class Dao {
 			boolean autoCommit=conn.getAutoCommit();
 			conn.setAutoCommit(false);
 			
-			//½«ÏúÊÛĞÅÏ¢Ìí¼Óµ½ÏúÊÛÖ÷±íÖĞ
+			//å°†é”€å”®ä¿¡æ¯æ·»åŠ åˆ°é”€å”®ä¸»è¡¨ä¸­
 			insert("insert into tb_sell_main values('" + sellMain.getSellId() + "','" + 
 			       sellMain.getPzs() + "','" + sellMain.getJe() + "','" + sellMain.getYsjl() + "','" + 
 					sellMain.getKhname() + "','" + sellMain.getXsdate() + "','" + sellMain.getCzy() +
@@ -1021,12 +1021,12 @@ public class Dao {
 			for(Iterator<TbSellDetail> iterator=selldetails.iterator();iterator.hasNext();)
 			{
 				TbSellDetail detail=iterator.next();
-				//½«ÏúÊÛÏêÏ¸ĞÅÏ¢Ìí¼Óµ½ÏúÊÛÏêÏ¸±íÖĞ
+				//å°†é”€å”®è¯¦ç»†ä¿¡æ¯æ·»åŠ åˆ°é”€å”®è¯¦ç»†è¡¨ä¸­
 				insert("insert into tb_sell_detail values('" + sellMain.getSellId() + "','" + 
 				       detail.getSpid() + "','" + detail.getDj() + "','" + detail.getSl() + "')");
 				
 				
-				//ĞŞ¸Ä¿â´æĞÅÏ¢
+				//ä¿®æ”¹åº“å­˜ä¿¡æ¯
 				Item item=new Item();
 				item.setId(detail.getSpid());
 				TbSpinfo info=getSpinfo(item);
@@ -1057,14 +1057,14 @@ public class Dao {
 	}
 	
 	
-	//»ñÈ¡×î´óÏúÊÛÍË»õ±àºÅ
+	//è·å–æœ€å¤§é”€å”®é€€è´§ç¼–å·
 	public static String getXsthMainMaxId(Date date)
 	{
 		return getMainTypeTableMaxId(date,"tb_xsth_main","XT","xsthID");
 	}
 	
 	
-	//»ñÈ¡ËùÓĞ¿â´æĞÅÏ¢
+	//è·å–æ‰€æœ‰åº“å­˜ä¿¡æ¯
 	public static List getKucunInfos()
 	{
 		List list=findForList("select id,spname,dj,kcsl from tb_kucun");
@@ -1072,7 +1072,7 @@ public class Dao {
 	}
 	
 	
-	//ÔÚÊÂÎïÖĞÌí¼ÓÏúÊÛÍË»õĞÅÏ¢
+	//åœ¨äº‹ç‰©ä¸­æ·»åŠ é”€å”®é€€è´§ä¿¡æ¯
 	public static boolean insertXsthInfo(TbXsthMain xsthMain)
 	{
 		try
@@ -1080,7 +1080,7 @@ public class Dao {
 			boolean autoCommit=conn.getAutoCommit();
 			conn.setAutoCommit(false);
 			
-			//½«ÏúÊÛÍË»õĞÅÏ¢²åÈëµ½ÏúÊÛÍË»õÖ÷±íÖĞ
+			//å°†é”€å”®é€€è´§ä¿¡æ¯æ’å…¥åˆ°é”€å”®é€€è´§ä¸»è¡¨ä¸­
 			insert("insert into tb_xsth_main values('" + xsthMain.getXsthId() + "','" + 
 			      xsthMain.getPzs() + "','" + xsthMain.getJe() + "','" + xsthMain.getYsjl() + "','" + 
 					xsthMain.getKhname() + "','" + xsthMain.getThdate() + "','" + xsthMain.getCzy() + "','" + 
@@ -1092,12 +1092,12 @@ public class Dao {
 			{
 				TbXsthDetail detail=iterator.next();
 				
-				//½«ĞÅÏ¢Ìí¼Óµ½ÏúÊÛÍË»õÏêÏ¸±íÖĞ
+				//å°†ä¿¡æ¯æ·»åŠ åˆ°é”€å”®é€€è´§è¯¦ç»†è¡¨ä¸­
 				insert("insert into tb_xsth_detail values('" + xsthMain.getXsthId() + "','" +
 				      detail.getSpid() + "','" + detail.getDj() + "','" + detail.getSl() + "')");
 				
 				
-				//ĞŞ¸Ä¿â´æĞÅÏ¢
+				//ä¿®æ”¹åº“å­˜ä¿¡æ¯
 				Item item=new Item();
 				item.setId(detail.getSpid());
 				TbSpinfo info=getSpinfo(item);
@@ -1125,7 +1125,7 @@ public class Dao {
 	}
 	
 	
-	//Ìí¼Ó¾­ÊÖÈË
+	//æ·»åŠ ç»æ‰‹äºº
 	public static int addJsr(TbJsr jsr)
 	{
 		String sql="insert into tb_jsr values(" + null + ",'" + jsr.getName() + "','" + jsr.getSex() + "','" +
@@ -1136,7 +1136,7 @@ public class Dao {
 	}
 	
 	
-	//»ñÈ¡ËùÓĞ¾­ÊÖÈËĞÅÏ¢
+	//è·å–æ‰€æœ‰å¯ç”¨ç»æ‰‹äººä¿¡æ¯
 	public static List getJsrs()
 	{
 		List list=findForList("select * from tb_jsr where enable=1");
@@ -1144,14 +1144,22 @@ public class Dao {
 	}
 	
 	
-	//ĞŞ¸ÄÓÃ»§·½·¨
+	//è·å–æ‰€æœ‰ç»æ‰‹äºº
+	public static List getAllJsrs()
+	{
+		List list=findForList("select * from tb_jsr");
+		return list;
+	}
+	
+	
+	//ä¿®æ”¹ç”¨æˆ·æ–¹æ³•
 	public static int modifyPassword(String oldPass,String pass)
 	{
 		return update("update tb_userlist set pass='" + pass + "' where pass='" + oldPass + "'");
 	}
 	
 	
-	//»ñÈ¡¾­ÊÖÈË¶ÔÏó£¬·µ»ØTbJsrÀà
+	//è·å–ç»æ‰‹äººå¯¹è±¡ï¼Œè¿”å›TbJsrç±»
 	public static TbJsr getJsr(Item item)
 	{
 		String where="name='" + item.getName() + "'";
@@ -1179,7 +1187,7 @@ public class Dao {
 	}
 	
 	
-	//ÑéÖ¤µÇÂ¼
+	//éªŒè¯ç™»å½•
 	public static boolean checkLogin(String userStr,String passStr) throws SQLException
 	{
 		ResultSet rs=findForResultSet("select * from tb_userlist where name='" + userStr + "' and pass='" + passStr + "'");
